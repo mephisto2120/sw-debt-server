@@ -35,23 +35,4 @@ public class JwtFilter extends BasicAuthenticationFilter {
         SecurityContextHolder.getContext().setAuthentication(authResult);
         chain.doFilter(request, response);
     }
-
-//    private UsernamePasswordAuthenticationToken getAuthenticationByToken(String token) {
-//        String secretKey = TextCodec.BASE64URL.encode("topSecret12#");
-//        Jws<Claims> claimsJws = Jwts.parser()
-//                .setSigningKey(secretKey)
-//                .parseClaimsJws(token);
-//
-//        String username = claimsJws.getBody().get("sub").toString();
-//        String rolesStr = claimsJws.getBody().get("roles").toString();
-//        Set<SimpleGrantedAuthority> simpleGrantedAuthorities = getSimpleGrantedAuthorities(rolesStr);
-//        return new UsernamePasswordAuthenticationToken(username, null, simpleGrantedAuthorities);
-//    }
-//
-//    private static Set<SimpleGrantedAuthority> getSimpleGrantedAuthorities(String rolesStr) {
-//        return Arrays.stream(rolesStr.split(","))
-////                .map(roleName -> "ROLE_" + roleName)
-//                .map(SimpleGrantedAuthority::new)
-//                .collect(Collectors.toSet());
-//    }
 }
