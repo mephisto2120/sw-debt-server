@@ -11,5 +11,5 @@ RUN mvn -f /home/app/pom.xml clean package -Dmaven.test.skip=true
 #
 FROM openjdk:8-jre-slim
 COPY --from=0 /home/app/target/sw-debt-server.jar /usr/local/lib/app.jar
-EXPOSE 11080
+EXPOSE 10080
 CMD java ${JAVA_OPTS} -Dspring.profiles.active=${ACTIVE_PROFILES} -jar /usr/local/lib/app.jar
