@@ -20,6 +20,6 @@ deploy:
   bucket_name: elasticbeanstalk-eu-central-1-700196549790
   bucket_path: sw-debt-docker-server
   on:
-    branch: feature/test_deploy
+    branch: test_deploy
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
