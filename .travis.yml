@@ -1,3 +1,25 @@
 language: java
-sudo: false
-script: mvn clean verify
+sudo: required
+services:
+  - docker
+
+script:
+  -  mvn clean package
+
+after_success:
+  - docker build -f Dockerfile.prod -t mephisto2120/sw-debt-server .
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push mephisto2120/sw-debt-server
+deploy:
+  provider: elasticbeanstalk
+  region: eu-central-1
+  app: sw-debt-server
+  env: Swdebtserver-env
+  bucket_name: elasticbeanstalk-eu-central-1-208892817434
+  bucket_path: sw-debt-docker-server
+  on:
+    branch: feature/aws
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

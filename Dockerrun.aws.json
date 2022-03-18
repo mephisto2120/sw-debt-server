@@ -1,0 +1,13 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "mephisto2120/sw-debt-server",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": 10080,
+      "HostPort": 10080
+    }
+  ]
+}
